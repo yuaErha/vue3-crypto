@@ -5,7 +5,8 @@ module.exports = {
     node: true
   },
   extends: [
-    'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended',
+    // 'plugin:vue/vue3-essential',
     'standard',
     'plugin:prettier/recommended' // 添加 prettier 插件
   ],
@@ -15,5 +16,8 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['vue', '@typescript-eslint'],
-  rules: {}
+  rules: {
+    // 'arrow-parens': 'always',
+    'no-undef': 'off'
+  }
 }
