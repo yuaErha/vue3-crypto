@@ -1,11 +1,38 @@
-# Vue 3 + Typescript + Vite
+<h1 align="center">Vue 3 + Typescript + Vite</h1>
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Recommended IDE Setup
+前端在线加解密工具网
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### 加密支持
+|  加密算法   | 是否支持  |
+|  ----  | ----  |
+| MD5  | 支持 |
+| Base64  | 支持 |
+| SHA  | 支持 |
+| RSA  | 支持 |
+| AES  | 支持 |
+| DES  | 支持 |
 
-## Type Support For `.vue` Imports in TS
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+### MD5
+![MD5](images/MD5.png)
+
+### Base64
+![Base64](images/base64.png)
+
+### SHA
+![SHA](images/SHA.png)
+
+### RSA
+![RSA](images/rsa1.png)
+![RSA](images/rsa2.png)
+![RSA](images/rsa3.png)
+
+
+## 感谢
+- [Vue](https://github.com/vuejs/vue)
+- [Vue-Router](https://github.com/vuejs/vue-router-next)
+- [Ant](https://2x.antdv.com/components/overview-cn)
+- [Web Cryptography API](https://www.w3.org/TR/WebCryptoAPI)
+- [crypto-js](https://cryptojs.gitbook.io/docs/)
+

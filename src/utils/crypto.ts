@@ -1,3 +1,15 @@
+// import TripleDES from 'crypto-js/tripledes'
+// import Utf8 from 'crypto-js/enc-utf8'
+// import ECB from 'crypto-js/mode-ecb'
+// import Pkcs7Pad from 'crypto-js/pad-pkcs7'
+// import HexFormat from 'crypto-js/format-hex'
+// const encrypt = (content: string, key: string) => {
+//   return TripleDES.encrypt(content, Utf8.parse(key), {
+//     mode: ECB,
+//     padding: Pkcs7Pad
+//   }).toString(HexFormat)
+// }
+
 type buf = ArrayBuffer | Uint8Array
 type KeyLength = 1024 | 2048 | 4096
 type shaName = 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512'

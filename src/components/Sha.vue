@@ -1,17 +1,7 @@
 <script setup lang="ts">
-import {
-  hmacSha1,
-  hmacSha256,
-  hmacSha384,
-  hmacSha512,
-  sha1,
-  sha256,
-  sha384,
-  sha512
-} from '@/utils/crypto'
+import { buf2hex, str2buf } from '@/utils/crypto'
 import { ref } from 'vue'
-
-const title = 'Hash'
+const title = 'SHA'
 const options = [
   'SHA1',
   'SHA256',
@@ -29,39 +19,50 @@ const input = ref('')
 const result = ref('')
 
 const calc = async () => {
-  // alert(input.value + curOption.value)
-  // alert(window.crypto.subtle)
-  // console.log(window.crypto.subtle)
-
+  if (window.crypto.subtle == null) alert('error: 当前环境不支持window.crypto')
   if (input.value.trim() === '') return
+  let hash: ArrayBuffer
+  let hmacKey: CryptoKey
   switch (curOption.value) {
     case 'SHA1':
-      result.value = await sha1(input.value)
-      break
     case 'SHA256':
-      result.value = await sha256(input.value)
-      break
     case 'SHA384':
-      result.value = await sha384(input.value)
-      break
     case 'SHA512':
-      result.value = await sha512(input.value)
+      hash = await window.crypto.subtle.digest(
+        { name: 'SHA-' + curOption.value.substring(3) },
+        str2buf(input.value)
+      )
       break
     case 'HMAC-SHA1':
-      result.value = await hmacSha1(key.value, input.value)
-      break
     case 'HMAC-SHA256':
-      result.value = await hmacSha256(key.value, input.value)
-      break
     case 'HMAC-SHA384':
-      result.value = await hmacSha384(key.value, input.value)
-      break
     case 'HMAC-SHA512':
-      result.value = await hmacSha512(key.value, input.value)
+      if (key.value === '') {
+        return
+      }
+      hmacKey = await window.crypto.subtle.importKey(
+        'raw',
+        str2buf(key.value),
+        {
+          name: 'HMAC',
+          hash: { name: 'SHA-' + curOption.value.substring(8) }
+        },
+        false,
+        ['sign', 'verify']
+      )
+      hash = await window.crypto.subtle.sign(
+        {
+          name: 'HMAC'
+        },
+        hmacKey,
+        str2buf(input.value)
+      )
       break
     default:
+      hash = str2buf('')
       break
   }
+  result.value = buf2hex(hash)
 }
 
 const copy = async () => {

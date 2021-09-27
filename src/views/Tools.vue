@@ -70,7 +70,7 @@ const handleChange = (name: string) => {
 
 <template>
   <div id="container">
-    <header>header</header>
+    <header></header>
     <div class="body">
       <div>
         <div class="nav">
@@ -106,7 +106,7 @@ const handleChange = (name: string) => {
         </div>
       </div>
     </div>
-    <footer>footer</footer>
+    <footer></footer>
   </div>
 </template>
 

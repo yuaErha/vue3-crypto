@@ -36,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'des',
         name: 'DES',
-        component: () => import(/* webpackChunkName: "Hash" */ '@/components/Des.vue')
+        component: () => import(/* webpackChunkName: "Hash" */ '@/components/Aes.vue')
       },
       {
         path: 'rsa',
